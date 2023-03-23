@@ -21,6 +21,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//using dotenv
+if (process.env.NODE_ENV != 'production') {
+  require('dotenv').config()
+}
+//MongoDB Connection 
+const mongoose=require('mongoose');
+mongoose.connect(process.env.CONNECTION_STRING)
+.then((res)=> {
+  console.log("Connected to MongoDB");
+}) .catch(()=>{
+  console.log("Connection to MongoDB Failed");
+})
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 //map all requests
