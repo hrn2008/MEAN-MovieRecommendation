@@ -1,2 +1,38 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<main>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Welcome to {{title}}</5>
+        </div>
+        {{!-- src of icons: https://www.flaticon.com/free-icons/ --}}
+        <div class="col-lg-3 col-md-3 col-sm-12 ms-4 ">
+            <a href="/recommendations">
+                <div class="b3">
+                    <img src="/images/icons/watch-movie.png" alt="movie recommendation" class="m-2"/>
+                    <p>List of all <br/> Recommendations</p>
+                </div>  
+            </a>      
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-12  ms-2 ">
+            <a href="/recommendations/create">
+                <div class="b3" >
+                    <img src="/images/icons/add-movie.png" alt="movie recommendation" class="m-2"/>
+                    <p>Recommend <br/> A Movie</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-12">
+            <a href="/movies">
+                <div class="b3">
+                    <img src="/images/icons/list.png" alt="movie recommendation" class="m-2"/>
+                    <p>List of all <br/> Movies</p>
+                </div>
+            </a>
+        </div>
+       
+        <div class="col-lg-12 col-md-12 mt-5">
+            <button onclick="window.location.href='/about';" class="button-92" role="button">About Us</button>
+        </div>
+    </div>
+</main>
