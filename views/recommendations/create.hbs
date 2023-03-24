@@ -1,0 +1,47 @@
+<main class="form p-5">
+    <h1>Please add your movie...</h1>
+    <form method="post" class="mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset>
+                    <label for="name">Name: *</label><br/>
+                    <input type="text" name="name" id="name" required />
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <label for="genre">Genre:</label>
+                    <input type="text" name="genre" id="genre" />
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <label for="year">Year:</label>
+                    <input type="text" name="year" id="year" />
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset>
+                    <label for="imdb">IMDB:</label>
+                    <input type="text" name="imdb" id="imdb" />
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset>
+                    <label for="summary">Summary:*</label></br>
+                    <textarea name="summary" id="summary" required></textarea>
+                </fieldset>
+            </div>
+        </div>
+
+
+        {{!-- <fieldset>
+            <label for="pic">Picture:</label>
+            <input type="text" name="pic" id="pic">
+        </fieldset> --}}
+
+        <button class="button-89 mt-5" role="button" >Save</button>
+    </form>
+</main>
