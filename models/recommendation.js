@@ -20,11 +20,12 @@ const recSchema = new mongoose.Schema({
     type:String,
      required : 'Summary is required'
   },
-  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
+  // comments: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Comment'
+  // }]
 });
+
 
 
 const Recommendation = mongoose.model('Recommendation', recSchema);

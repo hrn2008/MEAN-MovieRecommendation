@@ -5,6 +5,10 @@ const router = express.Router();
 const Recommendation = require('../models/recommendation');
 const Comment = require('../models/comment');
 
+//global auth check
+const global=require('../controllers/globalFunctions');
+
+
 /* Get all recommendations */
 router.get('/', (req, res) => {
   Recommendation.find().then((recommendations) => {
@@ -19,12 +23,13 @@ router.get('/', (req, res) => {
 });
 
 /* GET /create - Form*/
-router.get('/create', (req, res) => {
+//auth  check function as middleware
+router.get('/create', global.isAuthenticated, (req, res) => {
   res.render('recommendations/create');
 });
 
 // POST /Create - Save data to MongoDB
-router.post('/create', async (req, res) => {
+router.post('/create', global.isAuthenticated, async (req, res) => {
   try {
     const newDocument = await Recommendation.create(req.body);
     res.redirect('/recommendations');
@@ -47,7 +52,7 @@ router.get('/view/:_id', async (req, res) => {
 
 
 //GET /delete/id
-router.get('/delete/:_id', (req, res) => {
+router.get('/delete/:_id',global.isAuthenticated,  (req, res) => {
   Recommendation.deleteOne({ _id: req.params._id })
     .then(() => {
       res.redirect('/recommendations');
@@ -58,7 +63,7 @@ router.get('/delete/:_id', (req, res) => {
 });
 
 //Get /edit/id
-router.get('/edit/:_id', (req, res) => {
+router.get('/edit/:_id', global.isAuthenticated, (req, res) => {
   Recommendation.findById(req.params._id)
     .then(recommendation => {
       res.render('recommendations/edit', {
@@ -72,7 +77,7 @@ router.get('/edit/:_id', (req, res) => {
 });
 
 //Post /edit/id
-router.post('/edit/:_id', async (req, res) => {
+router.post('/edit/:_id', global.isAuthenticated, async (req, res) => {
   try {
     await Recommendation.findByIdAndUpdate(req.params._id, req.body);
     res.redirect('/recommendations');

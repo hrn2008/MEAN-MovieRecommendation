@@ -25,7 +25,7 @@ main {
   padding-bottom:20px;
 
 }
-main.home, main.form {
+main.home, main.form ,main.loginform{
   width:50%;
   height:auto;
   display:block;
@@ -45,21 +45,32 @@ main.home .row{
 main.home .row img {
   width:100px;
 }
-main.form fieldset{
+main.form fieldset,main.loginform fieldset{
   margin-top:15px;
 }
-main.form label {
+main.form label, main.loginform label {
   width:120px;
   letter-spacing: 2px;
 }
-main.form input{
+main.form input, main.loginform input{
   height:40px;
   border-radius: 5px;
-  width:100%;
+  width:60%;
+  padding:5px;
+}
+main.loginform button {
+  margin-left: 120px;
 }
 main.form textarea {
   width: 100%;
   height:150px;
+}
+main.loginform {
+  padding:30px;
+  width:600px;
+}
+#imgShowHide{
+  cursor: pointer;
 }
 div.recPage {
 margin:30px;

@@ -5,11 +5,11 @@ const plm=require('passport-local-mongoose');
 //Define schema for users
 const UserSchema = new mongoose.Schema({
   username: String,
-  password: String,
-  comments: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  }]
+  password: String
+//   comments: [{
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: 'Comment'
+//   }]
 });
 
 //extend the model (inherits)
