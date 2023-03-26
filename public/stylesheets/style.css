@@ -1,6 +1,8 @@
 /* Google Font*/
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
-
+  html, body {
+    height: 100%;
+  }
 body {
   padding: 1px;
   font-family: 'Poppins', sans-serif;
@@ -20,7 +22,8 @@ main {
   height: 100vh;
   /* transform: translate(-50%, -50%); */
   border-radius: 5px;
-  /* margin-top:0px; */
+  padding-bottom:20px;
+
 }
 main.home, main.form {
   width:50%;
@@ -113,13 +116,15 @@ div.view {
   margin:50px;
 }
 footer {
-  position: absolute;
-  bottom:0;
+  position: sticky;
+    bottom: 0;
+    top: 100%;
   background-color: #212B11;
   color:#EBEBEB;
   width:99.9%;
   padding:10px;
   text-align: center;
+  margin-top:10px;
 }
 /* src of the button css  */
 /* https://getcssscan.com/css-buttons-examples */

@@ -9,6 +9,7 @@ const usersRouter = require('./controllers/users');
 //new controller
 const recommendations = require('./controllers/recommendations');
 const comments=require('./controllers/comments')
+const auth=require('./controllers/auth');
 
 const app = express();
 
@@ -35,6 +36,28 @@ mongoose.connect(process.env.CONNECTION_STRING)
   console.log("Connection to MongoDB Failed");
 })
 
+//passport
+const passport=require('passport');
+const session=require('express-session');
+
+app.use(session({
+  secret:process.env.PASSPORT_SECRET,
+  //make sure session doesnt time out with resave
+  resave:true,
+  //for first login 
+  saveUninitialized:false
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User=require('./models/user');
+passport.use(User.createStrategy());
+
+//write session vars
+passport.serializeUser(User.serializeUser());
+//read session vars
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -42,6 +65,7 @@ app.use('/users', usersRouter);
 //map all requests
 app.use('/recommendations',recommendations);
 app.use('/comments',comments);
+app.use('/auth',auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

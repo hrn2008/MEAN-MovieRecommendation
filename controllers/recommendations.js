@@ -34,7 +34,7 @@ router.post('/create', async (req, res) => {
 });
 
 
-//GET /view 
+//GET /view/id 
 router.get('/view/:_id', async (req, res) => {
   try {
     let recommendation = await Recommendation.findById(req.params._id)
@@ -46,7 +46,7 @@ router.get('/view/:_id', async (req, res) => {
 });
 
 
-//GET /delete
+//GET /delete/id
 router.get('/delete/:_id', (req, res) => {
   Recommendation.deleteOne({ _id: req.params._id })
     .then(() => {

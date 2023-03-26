@@ -27,28 +27,7 @@ const recSchema = new mongoose.Schema({
 });
 
 
-
-//Define schema for users
-// const UserSchema = new mongoose.Schema({
-//   name: String,
-//   email: String,
-//   comments: [{
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Comment'
-//   }]
-// });
-
-// Define models for each schema
 const Recommendation = mongoose.model('Recommendation', recSchema);
-
-// const User = mongoose.model('User', UserSchema);
-
-
-//export them
 module.exports=Recommendation;
-// module.exports = {
-//     Recommendation,
-//     Comment
-//     // User
-//   };
+
   
