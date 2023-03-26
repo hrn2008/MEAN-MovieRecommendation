@@ -8,6 +8,7 @@ const indexRouter = require('./controllers/index');
 const usersRouter = require('./controllers/users');
 //new controller
 const recommendations = require('./controllers/recommendations');
+const comments=require('./controllers/comments')
 
 const app = express();
 
@@ -37,8 +38,10 @@ mongoose.connect(process.env.CONNECTION_STRING)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 //map all requests
 app.use('/recommendations',recommendations);
+app.use('/comments',comments);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

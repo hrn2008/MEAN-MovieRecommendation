@@ -19,27 +19,16 @@ const recSchema = new mongoose.Schema({
   summary: {
     type:String,
      required : 'Summary is required'
-  }
-  // comments: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'Comment'
-  // }]
+  },
+  comments: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Comment'
+  }]
 });
 
-// Define schema for comments
-// const CommentSchema = new mongoose.Schema({
-//   text: String,
-//   user: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'User'
-//   },
-//   recommendation: {
-//     type: mongoose.Schema.Types.ObjectId,
-//     ref: 'Recommendation'
-//   }
-// });
 
-// Define schema for users
+
+//Define schema for users
 // const UserSchema = new mongoose.Schema({
 //   name: String,
 //   email: String,
@@ -51,7 +40,7 @@ const recSchema = new mongoose.Schema({
 
 // Define models for each schema
 const Recommendation = mongoose.model('Recommendation', recSchema);
-// const Comment = mongoose.model('Comment', CommentSchema);
+
 // const User = mongoose.model('User', UserSchema);
 
 
@@ -59,7 +48,7 @@ const Recommendation = mongoose.model('Recommendation', recSchema);
 module.exports=Recommendation;
 // module.exports = {
 //     Recommendation,
-//     Comment,
-//     User
+//     Comment
+//     // User
 //   };
   

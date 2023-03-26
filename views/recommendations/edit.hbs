@@ -1,17 +1,17 @@
 <main class="form p-5">
-    <h1>Please add your movie...</h1>
+    <h1>Please edit your movie...</h1>
     <form method="post" class="mt-5">
         <div class="row">
             <div class="col-md-6">
                 <fieldset>
                     <label for="name">Name: *</label>
-                    <input type="text" name="name" id="name" required />
+                    <input type="text" name="name" id="name" value={{recommendation.name}} required />
                 </fieldset>
             </div>
             <div class="col-md-6">
                 <fieldset>
                     <label for="genre">Genre:</label>
-                    <input type="text" name="genre" id="genre" />
+                    <input type="text" name="genre" id="genre" value={{recommendation.genre}}>
                 </fieldset>
             </div>
         </div>
@@ -19,13 +19,13 @@
             <div class="col-md-6">
                 <fieldset>
                     <label for="year">Year:</label>
-                    <input type="text" name="year" id="year" />
+                    <input type="text" name="year" id="year" value={{recommendation.year}} >
                 </fieldset>
             </div>
             <div class="col-md-6">
                 <fieldset>
                     <label for="imdb">IMDB:</label>
-                    <input type="text" name="imdb" id="imdb" />
+                    <input type="text" name="imdb" id="imdb" value={{recommendation.imdb}} >
                 </fieldset>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="col-md-12">
                 <fieldset>
                     <label for="summary">Summary:*</label></br>
-                    <textarea name="summary" id="summary" required></textarea>
+                    <textarea name="summary" id="summary"  required>{{recommendation.summary}}</textarea>
                 </fieldset>
             </div>
         </div>
