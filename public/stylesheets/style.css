@@ -76,6 +76,9 @@ div.recPage {
 margin:30px;
 color:aliceblue;
 }
+div.recPage .card-header, .btns {
+  background-color:rgb(189, 221, 249) !important;
+}
 div.recPage .card{
   color:#252200;
 }

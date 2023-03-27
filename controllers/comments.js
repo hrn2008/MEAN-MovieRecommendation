@@ -2,6 +2,7 @@ const express=require('express');
 const router=express.Router();
 const Comment=require('../models/comment');
 const Recommendation=require('../models/recommendation');
+
 //global auth check
 const global=require('../controllers/globalFunctions');
 
@@ -10,7 +11,10 @@ const global=require('../controllers/globalFunctions');
 router.get('/create/:_id', global.isAuthenticated,  (req,res)=>{
     Recommendation.findById(req.params._id)
     .then((recommendation) => {
-      res.render('comments/create', { recommendation });
+      res.render('comments/create', { 
+        title:'Add your comment',
+        recommendation ,
+        user: req.user });
     })
     .catch((err) => {
       console.log(err);

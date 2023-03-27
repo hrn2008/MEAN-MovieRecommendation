@@ -1,33 +1,35 @@
 <div class="recPage">
     <h1>{{title}}</h1>
+    {{#if user}}
     <div class="row">
         <div class="col-md-6">
             <button onclick="window.location.href='/recommendations/create';" class="button-89" role="button">Recommend a
         Movie</button>
         </div>
     </div>   
+    {{/if}}
     <div class="row mb-5">
          {{#each recs}}
         <div class="col-md-3 mb-5 mt-3">
             <div class="card">
-                <h5 class="card-header">Movie: {{this.name}}</h5>
+                <h5 class="card-header">{{this.name}}</h5>
                 <div class="card-body">
                     <h6 class="card-title">Genre: {{this.genre}}</h6>
                     <h6 class="card-title">Year: {{this.year}}</h6>
                     <h6 class="card-title">IMDB: {{this.imdb}}</h6>
                     <p class="card-text">Summary: {{this.summary}}</p>
-                    <hr/>
-                    <div style="background-color:rgb(189, 221, 249)">
+                    <hr/>                   
+                    <div class="btns">
                         <button onclick="window.location.href='/recommendations/view/{{this._id}}';" class="button-48" role="button"><span
                                 class="text">View</span></button>
-                    
-                        <button onclick="window.location.href='/recommendations/edit/{{this._id}}';" class="button-48" role="button"><span
-                                class="text">Edit</span></button>
-                    
-                        <button onclick="window.location.href='/recommendations/delete/{{this._id}}';" class="button-48" role="button"><span
-                                class="text">Delete</span></button>
+                        {{#if ../user}}
+                            <button onclick="window.location.href='/recommendations/edit/{{this._id}}';" class="button-48" role="button"><span
+                                    class="text">Edit</span></button>
+                        
+                            <button onclick="window.location.href='/recommendations/delete/{{this._id}}';" class="button-48" role="button"><span class="text">Delete</span></button>
+                        {{/if}}
                     </div>
-                   
+                  
                 </div>
             </div>
         </div>

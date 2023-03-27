@@ -9,13 +9,14 @@ const Comment = require('../models/comment');
 const global=require('../controllers/globalFunctions');
 
 
-/* Get all recommendations */
+/* Get all recommendations from DB */
 router.get('/', (req, res) => {
   Recommendation.find().then((recommendations) => {
-    console.log(recommendations);
+    // console.log(req.user);
     res.render('recommendations/index', {
       title: 'All Recommendations',
-      recs: recommendations
+      recs: recommendations,
+      user: req.user
     });
   }).catch((err) => {
     console.log(err);
@@ -25,7 +26,10 @@ router.get('/', (req, res) => {
 /* GET /create - Form*/
 //auth  check function as middleware
 router.get('/create', global.isAuthenticated, (req, res) => {
-  res.render('recommendations/create');
+  res.render('recommendations/create',{
+    title:"Recomend your movie",
+    user: req.user
+  });
 });
 
 // POST /Create - Save data to MongoDB
@@ -44,7 +48,11 @@ router.get('/view/:_id', async (req, res) => {
   try {
     let recommendation = await Recommendation.findById(req.params._id)
     let comments = await Comment.find({ recommendation: req.params._id });
-    res.render('recommendations/view', { recommendation, comments });
+    res.render('recommendations/view', { 
+      title:'View the recommended movie',
+      recommendation,
+      comments,
+      user:req.user });
   } catch (error) {
     console.log(error)
   }
@@ -68,7 +76,8 @@ router.get('/edit/:_id', global.isAuthenticated, (req, res) => {
     .then(recommendation => {
       res.render('recommendations/edit', {
         recommendation: recommendation,
-        title: 'Edit the Recommendation'
+        title: 'Edit the Recommendation',
+        user:req.user 
       });
     })
     .catch(err => {
