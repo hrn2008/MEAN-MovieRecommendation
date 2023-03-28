@@ -8,8 +8,9 @@ const indexRouter = require('./controllers/index');
 const usersRouter = require('./controllers/users');
 //new controller
 const recommendations = require('./controllers/recommendations');
-const comments=require('./controllers/comments')
-const auth=require('./controllers/auth');
+const comments = require('./controllers/comments')
+const auth = require('./controllers/auth');
+const bestMovies = require('./controllers/bestMovies');
 
 const app = express();
 
@@ -28,30 +29,31 @@ if (process.env.NODE_ENV != 'production') {
   require('dotenv').config()
 }
 //MongoDB Connection 
-const mongoose=require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect(process.env.CONNECTION_STRING)
-.then((res)=> {
-  console.log("Connected to MongoDB");
-}) .catch(()=>{
-  console.log("Connection to MongoDB Failed");
-})
+  .then((res) => {
+    console.log("Connected to MongoDB");
+  }).catch(() => {
+    console.log("Connection to MongoDB Failed");
+  })
 
 //passport
-const passport=require('passport');
-const session=require('express-session');
+const passport = require('passport');
+const session = require('express-session');
 
 app.use(session({
-  secret:process.env.PASSPORT_SECRET,
+  secret: process.env.PASSPORT_SECRET,
   //make sure session doesnt time out with resave
-  resave:true,
+  resave: true,
   //for first login 
-  saveUninitialized:false
+  saveUninitialized: false
 }))
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-const User=require('./models/user');
+const User = require('./models/user');
+const { map } = require('jquery');
 passport.use(User.createStrategy());
 
 //write session vars
@@ -59,21 +61,39 @@ passport.serializeUser(User.serializeUser());
 //read session vars
 passport.deserializeUser(User.deserializeUser());
 
+//google auth strategy
+// const googleStrategy = require('passport-google-oauth20').Strategy;
+//authenticate google app web/api keys
+const googleStrategy = require('passport-google-oauth20').Strategy;
+passport.use(new googleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK_URL
+}, (accessToken, refreshToken, profile, done) => {
+  User.findOrCreate({ oauthId: profile.id }, {
+    username: profile.displayName,
+    oauthProvider: 'Google'
+  }, (err, user) => {
+    return done(err, user);
+  })
+}));
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 //map all requests
-app.use('/recommendations',recommendations);
-app.use('/comments',comments);
-app.use('/auth',auth);
-
+app.use('/recommendations', recommendations);
+app.use('/comments', comments);
+app.use('/auth', auth);
+app.use('/bestmovies', bestMovies); 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
+// // error handler
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

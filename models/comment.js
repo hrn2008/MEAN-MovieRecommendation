@@ -10,11 +10,10 @@ const CommentSchema = new mongoose.Schema({
     recommendation: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Recommendation'
+    },
+    username: {
+      type: String
     }
-    // user: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'User'
-    // }
     
   });
 

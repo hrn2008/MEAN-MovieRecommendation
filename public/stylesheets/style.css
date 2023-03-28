@@ -91,7 +91,7 @@ div.recPage .card-text {
 .ViewComments {
   background-color: #007db2;;
   margin:1px 30px;
-  color:#dde7ff;
+  /* color:#dde7ff; */
   padding: 10px;
   border-radius: 10px;
 }
@@ -125,9 +125,38 @@ a {
   background-color:  #007cb1;
   padding-left: 20px;
 }
-
 div.view {
   margin:50px;
+}
+thead {
+  color: #FFFFFF;
+  background-color: #063672;
+}
+tr {
+  color: #FFFFFF;
+  background-color: #658ab5;
+}
+td:nth-child(2) {
+  width:200px;
+}
+.bestMovies{
+  text-align: center;
+}
+.moviesTable {
+  width:90% !important;
+  margin:10px auto;
+}
+main.comment label{
+  width: 200px;
+}
+.googleimg {
+  width:200px;
+  cursor: pointer;
+  margin-left: 35px;
+}
+.googleimg:hover {
+  box-shadow: 2px 2px 5px #181616;
+  outline:2px solid #ccc;
 }
 footer {
   position: sticky;

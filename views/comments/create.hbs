@@ -1,20 +1,35 @@
-<main class="form p-5">
+<main class="form comment p-5">
     <h1>Please add your comment...</h1>
     <form method="post" class="mt-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <fieldset>
+                        
+                    {{#if user}}
+                        <label for="username">Username:</label>
+                        <input type="text" name="username"  id="username" value={{user.username}} />
+                    {{else}}
+                        <label for="username">Your Name:</label>
+                        <input type="text" name="username"  id="username" />
+                    {{/if}}
+
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <fieldset>
                     <label for="desc">Your Comment:*</label><br/>
                     <textarea name="desc" id="desc" required ></textarea>
                 </fieldset>
             </div>
-            <div class="col-md-6">
+            <div style="display:none">
                 <fieldset>
                     <label for="recommendation">Movie ID:</label>
-                    <input type="text" name="recommendation" id="recommendation" value={{recommendation._id}} />
+                    <input type="text" name="recommendation"  id="recommendation" value={{recommendation._id}} />
                 </fieldset>
             </div>
-
-        <button class="button-89 mt-5" role="button" >Save</button>
+        </div>
+        <button class="button-89 mt-2" role="button" >Save</button>
     </form>
 </main>

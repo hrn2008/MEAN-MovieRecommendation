@@ -5,24 +5,30 @@
         <p class="card-text">Year: {{ recommendation.year }}</p>
         <p class="card-text">Summary: {{ recommendation.summary}}</p>
 
-        <button onclick="window.location.href='/comments/create/{{ recommendation._id }}';" class="button-48" role="button"><span class="text">Add Comment</span></button>
+        
+        <button onclick="window.location.href='/comments/create/{{ recommendation._id }}';" class="button-48"
+            role="button"><span class="text">Add Comment</span></button>
+        {{#if user}}
+        <button onclick="window.location.href='/recommendations/edit/{{ recommendation._id }}';" class="button-48"
+            role="button"><span class="text">Edit</span></button>
 
-        <button onclick="window.location.href='/recommendations/edit/{{ recommendation._id }}';" class="button-48" role="button"><span class="text">Edit</span></button>
+        <button onclick="window.location.href='/recommendations/delete/{{ recommendation._id }}';" class="button-48"
+            role="button"><span class="text">Delete</span></button>
+        {{/if}}
 
-        <button onclick="window.location.href='/recommendations/delete/{{ recommendation._id }}';" class="button-48" role="button"><span class="text">Delete</span></button>
-                                
-        {{!-- <a href="/comments/create/{{ recommendation._id }}" class="btn btn-primary">Add Comment</a>
-        <a href="/recommendations/edit/{{ recommendation._id }}" class="btn btn-warning">Edit</a>
-        <a href="/recommendations/delete/{{ recommendation._id }}" class="btn btn-danger">Delete</a> --}}
+
     </div>
 </div>
-    <div class="ViewComments">
-        <h2>Comments</h2>
-            {{#each comments}}
-            <div class="view card">
-                <div class="card-body">
-                    {{this.desc}}
-                </div>
-            </div>
-            {{/each}}
+<div class="ViewComments">
+    <h2>Comments</h2>
+    {{#each comments}}
+    <div class="card mt-3 ms-5 me-5">
+        <div class="card-header">
+            User: {{this.username}}
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{this.desc}}</p>
+        </div>
     </div>
+    {{/each}}
+</div>
