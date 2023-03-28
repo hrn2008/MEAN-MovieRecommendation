@@ -65,18 +65,32 @@ passport.deserializeUser(User.deserializeUser());
 // const googleStrategy = require('passport-google-oauth20').Strategy;
 //authenticate google app web/api keys
 const googleStrategy = require('passport-google-oauth20').Strategy;
+
 passport.use(new googleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
   callbackURL: process.env.GOOGLE_CALLBACK_URL
-}, (accessToken, refreshToken, profile, done) => {
-  User.findOrCreate({ oauthId: profile.id }, {
-    username: profile.displayName,
-    oauthProvider: 'Google'
-  }, (err, user) => {
-    return done(err, user);
-  })
-}));
+}, async function (accessToken, refreshToken, profile, done) {
+  try {
+    console.log(profile);
+    // Find or create user in your database
+    let user = await User.findOne({ googleId: profile.id });
+    if (!user) {
+      // Create new user in database
+      const username = Array.isArray(profile.emails) && profile.emails.length > 0 ? profile.emails[0].value.split('@')[0] : '';
+      const newUser = new User({
+        username: profile.displayName,
+        googleId: profile.id
+      });
+      user = await newUser.save();
+    }
+    return done(null, user);
+  } catch (err) {
+    return done(err);
+  }
+}
+));
+
 
 
 app.use('/', indexRouter);

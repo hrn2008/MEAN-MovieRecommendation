@@ -1,6 +1,8 @@
 <div class="bestMovies"> 
+    <h1>Top 100 Movies based on TMDB user's votes</h1>
   <table class="moviesTable table table-striped table-hover">
     <thead>
+        <th>Vote Average</th>
         <th>Title</th>
         <th>Release Date</th>
         <th>Description</th>
@@ -8,6 +10,7 @@
     <tbody>
         {{#each movies}}
             <tr>
+                <td>{{vote_average}}</td>
                 <td> {{this.title}}</td>
                 <td>{{this.release_date}}</td>
                 <td>{{this.overview}}</td>

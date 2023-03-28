@@ -12,15 +12,14 @@
         <button onclick="window.location.href='/recommendations/edit/{{ recommendation._id }}';" class="button-48"
             role="button"><span class="text">Edit</span></button>
 
-        <button onclick="window.location.href='/recommendations/delete/{{ recommendation._id }}';" class="button-48"
-            role="button"><span class="text">Delete</span></button>
+        <button onclick="window.location.href='/recommendations/delete/{{ recommendation._id }}';" class="button-48" role="button" onmousedown="return confirmDelete();"><span class="text">Delete</span></button>
         {{/if}}
 
 
     </div>
 </div>
 <div class="ViewComments">
-    <h2>Comments</h2>
+    <h2>Comments:</h2>
     {{#each comments}}
     <div class="card mt-3 ms-5 me-5">
         <div class="card-header">

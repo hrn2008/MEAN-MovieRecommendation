@@ -13,14 +13,10 @@ main {
   height:auto;
   background: linear-gradient(to bottom, #007cb1, #252200);
   color:#fff;
-  /* position: absolute;
-  top: 10%;
-  left: 5%; */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* transform: translate(-50%, -50%); */
   border-radius: 5px;
   padding-bottom:20px;
 
@@ -89,14 +85,17 @@ div.recPage .card-text {
     max-width: 200px; /* Change this to the desired width */
 }
 .ViewComments {
-  background-color: #007db2;;
-  margin:1px 30px;
+  background:linear-gradient(to bottom, #007cb1, #252200);
+  margin:1px 50px;
   /* color:#dde7ff; */
-  padding: 10px;
+  padding: 30px;
   border-radius: 10px;
 }
 .ViewComments .card-body{
   color:#252200;
+}
+.ViewComments h2 {
+  color: #ccc;
 }
 .b3 {
   padding:10px;
@@ -128,23 +127,28 @@ a {
 div.view {
   margin:50px;
 }
-thead {
-  color: #FFFFFF;
-  background-color: #063672;
-}
+
 tr {
   color: #FFFFFF;
-  background-color: #658ab5;
+  background-color: #95a1b1;
 }
-td:nth-child(2) {
+thead tr {
+  color: #FFFFFF;
+  background-color: #426999 !important;
+}
+td:nth-child(2), td:nth-child(3) {
   width:200px;
 }
 .bestMovies{
   text-align: center;
 }
+.bestMovies h1{
+  color:#dde7ff;
+  margin-top:20px;
+}
 .moviesTable {
   width:90% !important;
-  margin:10px auto;
+  margin:30px auto;
 }
 main.comment label{
   width: 200px;
@@ -157,6 +161,9 @@ main.comment label{
 .googleimg:hover {
   box-shadow: 2px 2px 5px #181616;
   outline:2px solid #ccc;
+}
+.about {
+  padding:50px;
 }
 footer {
   position: sticky;

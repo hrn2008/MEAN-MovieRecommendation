@@ -6,8 +6,8 @@
                 <fieldset>
                         
                     {{#if user}}
-                        <label for="username">Username:</label>
-                        <input type="text" name="username"  id="username" value={{user.username}} />
+                        <label for="username">Username:{{user.username}}</label>
+                        <input type="text" name="username"  id="username" value={{user.username}} hidden/>
                     {{else}}
                         <label for="username">Your Name:</label>
                         <input type="text" name="username"  id="username" />

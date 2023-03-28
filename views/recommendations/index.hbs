@@ -26,7 +26,7 @@
                             <button onclick="window.location.href='/recommendations/edit/{{this._id}}';" class="button-48" role="button"><span
                                     class="text">Edit</span></button>
                         
-                            <button onclick="window.location.href='/recommendations/delete/{{this._id}}';" class="button-48" role="button"><span class="text">Delete</span></button>
+                            <button onclick="window.location.href='/recommendations/delete/{{this._id}}';" class="button-48" role="button" onmousedown="return confirmDelete();"><span class="text">Delete</span></button>
                         {{/if}}
                     </div>
                   

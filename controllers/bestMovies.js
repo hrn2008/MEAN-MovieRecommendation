@@ -25,7 +25,7 @@ async function fetchTopRatedMovies() {
     //I set a filter for original language of the movie for English
     const movies = response.data.results.filter(movie => movie.original_language === 'en');
     topRatedMovies = [...topRatedMovies, ...movies];
-
+    console.log(topRatedMovies);
     currentPage++;
   }
 
