@@ -25,11 +25,7 @@ main.home, main.form ,main.loginform{
   width:50%;
   height:auto;
   display:block;
-  position: absolute;
-  top: 50%;
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  margin-top:0px;
+  margin:100px auto;
 }
 main.form {
   width:60%;
